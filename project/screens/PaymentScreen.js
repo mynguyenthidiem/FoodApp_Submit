@@ -53,7 +53,7 @@ const PAYMENT_METHODS = [
 const formatCurrency = value => {
   const amount = Number(value || 0);
 
-  return `${amount.toLocaleString('vi-VN')} ₫`;
+  return `$${amount.toLocaleString('en-US')}`;
 };
 
 export default function PaymentScreen({ navigation, route }) {

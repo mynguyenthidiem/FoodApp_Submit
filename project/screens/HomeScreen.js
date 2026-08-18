@@ -23,6 +23,7 @@ import { getFoods } from '../services/foodService';
 import { getSystemCategories } from '../services/categoryService';
 import { getAllRestaurants } from '../services/restaurantService';
 import { fetchCurrentUser } from '../store/userSlice';
+import { addCartItem } from '../store/cartSlice';
 
 import { toggleFavorite, fetchFavoriteFoods, fetchFavoriteRestaurants } from '../store/favoriteSlice';
 import { fetchUnreadCount } from '../store/notificationSlice';
@@ -109,7 +110,6 @@ export default function HomeScreen({ navigation }) {
       setRestaurantLoading(false);
     }
   };
-
 
   useEffect(() => {
     loadCategories();
@@ -230,6 +230,22 @@ export default function HomeScreen({ navigation }) {
                   favorite: favoriteIds.includes(item.id),
                 }}
                 onFavoritePress={handleFavorite}
+                onAddPress={async () => {
+                  try {
+                    await dispatch(
+                      addCartItem({
+                        foodId: item.id,
+                        quantity: 1,
+                      }),
+                    ).unwrap();
+
+                    navigation.navigate('MainTabs', {
+                      screen: 'Cart',
+                    });
+                  } catch (error) {
+                    console.log('Add to cart failed:', error);
+                  }
+                }}
                 onPress={() =>
                   navigation.navigate('FoodDetail', {
                     foodId: item.id,

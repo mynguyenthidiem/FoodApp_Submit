@@ -16,7 +16,7 @@ import commonStyles from "../styles/common";
 import favoriteStyles from "../styles/favorite";
 import { COLORS } from "../styles/theme";
 import { resolveImage } from "../utils/imageUrl";
-
+import { addCartItem } from "../store/cartSlice";
 import FavoriteFoodCard from "../components/FavoriteFoodCard";
 import FavoriteRestaurantCard from "../components/FavoriteRestaurantCard";
 
@@ -28,7 +28,6 @@ import {
     toggleFavorite,
     toggleRestaurantFavorite,
 } from "../store/favoriteSlice";
-import { addCartItem } from "../store/cartSlice";
 import { fetchCurrentUser } from "../store/userSlice";
 
 const TABS = {
@@ -164,7 +163,21 @@ export default function FavoritesScreen({ navigation }) {
                                     navigation.navigate("FoodDetail", { foodId: food.id })
                                 }
                                 onFavoritePress={handleRemoveFood}
-                                onAddPress={handleAddToCart}
+                                onAddPress={async () => {
+                                    try {
+                                        await dispatch(addCartItem({ foodId: item.id, quantity: 1 })).unwrap();
+                                    } catch (error) {
+                                        console.log('Add to cart failed:', error);
+                                        return;
+                                    }
+
+                                    try {
+                                        navigation.navigate('MainTabs', { screen: 'Cart' });
+                                    } catch (navError) {
+                                        console.log('Navigate to cart failed:', navError);
+                                    }
+                                }}
+                                
                             />
                         ) : (
                             <FavoriteRestaurantCard

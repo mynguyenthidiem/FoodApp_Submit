@@ -29,7 +29,10 @@ namespace backend.Services
             {
                 throw new InvalidOperationException("Email already exists.");
             }
-
+            if (dto.Phone!= null && await _repo.ExistsPhone(dto.Phone))
+            {
+                throw new InvalidOperationException("Phone number already exists.");
+            }
             var user = new User
             {
                 FullName = dto.FullName,
@@ -97,10 +100,10 @@ namespace backend.Services
 
         public async Task<AuthResponseDto> LoginWithGoogle(GoogleLoginDto dto)
         {
-            
+
             FirebaseToken decodedToken = await FirebaseAuth.DefaultInstance.VerifyIdTokenAsync(dto.IdToken);
 
-            
+
             decodedToken.Claims.TryGetValue("email", out var emailObj);
             var email = emailObj?.ToString();
 
@@ -109,10 +112,10 @@ namespace backend.Services
                 throw new UnauthorizedAccessException("Invalid Google account.");
             }
 
-            
+
             var user = await _repo.GetByEmail(email);
 
-            
+
             if (user == null)
             {
                 decodedToken.Claims.TryGetValue("name", out var nameObj);
@@ -121,15 +124,15 @@ namespace backend.Services
                 {
                     Email = email,
                     FullName = nameObj?.ToString() ?? "",
-                    Password = "", 
+                    Password = "",
                     IsActive = true,
                     CreatedAt = DateTime.UtcNow
                 };
 
-                
+
                 user = await _repo.Create(user);
 
-                
+
                 var role = await _repo.GetRoleByName("Customer");
 
                 if (role != null)
@@ -141,7 +144,7 @@ namespace backend.Services
                     });
                 }
 
-                
+
                 user = await _repo.GetByEmail(email);
 
                 if (user == null)
@@ -158,13 +161,13 @@ namespace backend.Services
                 });
             }
 
-            
+
             if (!user.IsActive)
             {
                 throw new InvalidOperationException("Account has been locked.");
             }
 
-            
+
             var token = GenerateToken(user);
 
             return new AuthResponseDto

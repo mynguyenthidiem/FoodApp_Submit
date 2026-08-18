@@ -6,7 +6,7 @@ import homeStyles from "../styles/home";
 import { COLORS } from "../styles/theme";
 import { resolveImage } from "../utils/imageUrl";
 
-export default function FoodCard({ item, onPress, onFavoritePress, onAddPress }) {
+export default function FoodCard({ item, onPress, onFavoritePress, onAddPress}) {
   return (
     <TouchableOpacity
       style={homeStyles.foodCard}
