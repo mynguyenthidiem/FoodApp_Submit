@@ -23,9 +23,6 @@ import { fetchCurrentUser } from '../store/userSlice';
 
 import { fetchCart } from '../store/cartSlice';
 
-// FIX: import hàm resolveImage dùng chung với các màn hình khác
-// (FoodDetailScreen, HomeScreen, EditProfileScreen, MyOrdersScreen, FavoritesScreen...)
-// để tự động nối API_ORIGIN vào các đường dẫn ảnh tương đối do backend trả về.
 import { resolveImage } from '../utils/imageUrl';
 
 const CheckoutScreen = ({ navigation, route }) => {
@@ -109,9 +106,9 @@ const CheckoutScreen = ({ navigation, route }) => {
     return `${Number(value || 0).toLocaleString('vi-VN')}$`;
   };
 
-  // FIX: đổi tên từ getFoodImage -> getFoodImageRaw.
-  // Hàm này CHỈ lấy chuỗi đường dẫn thô (có thể là URL đầy đủ hoặc đường dẫn
-  // tương đối như "/images/food/pho.jpg"), KHÔNG tự dùng để render trực tiếp.
+
+
+
   const getFoodImageRaw = item => {
     const image =
       item.food?.imageUrl ||
@@ -394,12 +391,12 @@ const CheckoutScreen = ({ navigation, route }) => {
 
           <View style={orderStyles.checkoutCard}>
             {cartItems.map((item, index) => {
-              // FIX: dùng resolveImage(getFoodImageRaw(item)) thay vì getFoodImage(item).
-              // resolveImage() tự động:
-              //  - Giữ nguyên nếu đã là URL đầy đủ (http/https)
-              //  - Tự nối API_ORIGIN (http://10.0.2.2:5078) vào phía trước nếu là
-              //    đường dẫn tương đối do backend trả về (vd: "/images/food/pho.jpg")
-              //  - Trả về ảnh fallback cục bộ (assets/banner.jpg) nếu không có ảnh
+            
+            
+            
+            
+            
+            
               const imageSource = resolveImage(getFoodImageRaw(item));
               const name = getFoodName(item);
               const price = getItemPrice(item);

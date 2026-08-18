@@ -3,7 +3,6 @@ import { COLORS, FONT, SPACING, RADIUS, SHADOW } from "./theme";
 
 const foodStyles = StyleSheet.create({
 
-  // HERO
 
   heroImage: {
     width: "100%",
@@ -21,7 +20,6 @@ const foodStyles = StyleSheet.create({
     paddingBottom: SPACING.xxxl,
   },
 
-  // TITLE
 
   name: {
     marginTop: SPACING.sm,
@@ -74,7 +72,6 @@ const foodStyles = StyleSheet.create({
     color: COLORS.heading,
   },
 
-  // RESTAURANT
 
   restaurantRow: {
     flexDirection: "row",
@@ -111,7 +108,6 @@ const foodStyles = StyleSheet.create({
     color: COLORS.text,
   },
 
-  // PRICE
 
   priceRow: {
     flexDirection: "row",
@@ -138,9 +134,6 @@ const foodStyles = StyleSheet.create({
     textDecorationLine: "line-through",
   },
 
-  // ==========================
-  // DESCRIPTION
-  // ==========================
 
   description: {
     marginTop: SPACING.sm,
@@ -152,9 +145,6 @@ const foodStyles = StyleSheet.create({
     color: COLORS.text,
   },
 
-  // ==========================
-  // INFO CARD
-  // ==========================
 
   infoCard: {
     flexDirection: "row",
@@ -202,9 +192,6 @@ const foodStyles = StyleSheet.create({
     color: COLORS.heading,
   },
 
-  // ==========================
-  // QUANTITY
-  // ==========================
 
   quantityCard: {
     flexDirection: "row",
@@ -238,9 +225,6 @@ const foodStyles = StyleSheet.create({
     color: COLORS.heading,
   },
 
-  // ==========================
-  // SUMMARY
-  // ==========================
 
   summaryCard: {
     padding: SPACING.lg,

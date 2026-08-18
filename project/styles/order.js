@@ -330,9 +330,6 @@ const orderStyles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: SPACING.xxxl,
   },
-  // ============================================================
-  // PAYMENT SCREEN
-  // ============================================================
 
   // Payment header
   paymentHeaderContainer: {

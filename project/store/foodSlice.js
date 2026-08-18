@@ -7,20 +7,12 @@ import {
   searchFoods,
 } from '../services/foodService';
 
-// ======================================
-// GET ALL FOODS
-// ======================================
-
 export const fetchFoods = createAsyncThunk(
   'food/fetchFoods',
   async ({ pageNumber = 1, pageSize = 100 } = {}) => {
     return await getFoods(pageNumber, pageSize);
   },
 );
-
-// ======================================
-// GET FOOD DETAIL
-// ======================================
 
 export const fetchFoodById = createAsyncThunk(
   'food/fetchFoodById',
@@ -29,10 +21,6 @@ export const fetchFoodById = createAsyncThunk(
   },
 );
 
-// ======================================
-// SEARCH
-// ======================================
-
 export const fetchSearchFoods = createAsyncThunk(
   'food/fetchSearchFoods',
   async ({ keyword = '', pageNumber = 1, pageSize = 20 } = {}) => {
@@ -40,20 +28,12 @@ export const fetchSearchFoods = createAsyncThunk(
   },
 );
 
-// ======================================
-// RELATED FOODS
-// ======================================
-
 export const fetchFoodsByCategory = createAsyncThunk(
   'food/fetchFoodsByCategory',
   async ({ categoryId, pageNumber = 1, pageSize = 20 }) => {
     return await getFoodsByCategory(categoryId, pageNumber, pageSize);
   },
 );
-
-// ======================================
-// INITIAL STATE
-// ======================================
 
 const initialState = {
   items: [],
@@ -70,10 +50,6 @@ const initialState = {
   status: 'idle',
   error: null,
 };
-
-// ======================================
-// SLICE
-// ======================================
 
 const foodSlice = createSlice({
   name: 'food',
@@ -94,9 +70,9 @@ const foodSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      // ==================================
-      // GET ALL
-      // ==================================
+  
+  
+  
 
       .addCase(fetchFoods.pending, state => {
         state.status = 'loading';
@@ -122,9 +98,9 @@ const foodSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // DETAIL
-      // ==================================
+  
+  
+  
 
       .addCase(fetchFoodById.pending, state => {
         state.status = 'loading';
@@ -143,9 +119,9 @@ const foodSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // RELATED
-      // ==================================
+  
+  
+  
 
       .addCase(fetchFoodsByCategory.pending, state => {
         state.relatedFoods = [];
@@ -165,9 +141,9 @@ const foodSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // SEARCH
-      // ==================================
+  
+  
+  
 
       .addCase(fetchSearchFoods.pending, state => {
         state.status = 'loading';

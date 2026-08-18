@@ -3,7 +3,7 @@ import { getSystemCategories } from '../services/categoryService';
 
 export const fetchCategories = createAsyncThunk("category/fetch", async () => {
   const res = await getSystemCategories();
-  return res.data; // vẫn là mảng thẳng, SystemCategories không phân trang
+  return res.data;
 });
 
 const categorySlice = createSlice({

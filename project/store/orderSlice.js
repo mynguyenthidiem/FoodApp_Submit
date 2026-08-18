@@ -48,7 +48,6 @@ export const cancelOrderAsync = createAsyncThunk(
 );
 
 const initialState = {
-  // Order list
 
   items: [],
 
@@ -58,11 +57,9 @@ const initialState = {
 
   totalCount: 0,
 
-  // Current order
 
   currentOrder: null,
 
-  // Loading
 
   status: "idle",
 

@@ -1,4 +1,4 @@
-// store/homeSlice.js
+
 
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getFoods } from "../services/foodService";
@@ -60,7 +60,7 @@ const homeSlice = createSlice({
     extraReducers: (builder) => {
         builder
 
-            // FOODS
+        
             .addCase(fetchFoods.pending, (state) => {
                 state.foodsLoading = true;
             })
@@ -73,7 +73,7 @@ const homeSlice = createSlice({
                 state.error = action.payload;
             })
 
-            // CATEGORIES
+        
             .addCase(fetchCategories.pending, (state) => {
                 state.categoriesLoading = true;
             })
@@ -86,7 +86,7 @@ const homeSlice = createSlice({
                 state.error = action.payload;
             })
 
-            // RESTAURANTS
+        
             .addCase(fetchRestaurants.pending, (state) => {
                 state.restaurantsLoading = true;
             })

@@ -2,10 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { createPayment, getPaymentByOrder } from '../services/paymentService';
 
-// ============================================================
-// CREATE PAYMENT
-// ============================================================
-
 export const createPaymentThunk = createAsyncThunk(
   'payment/createPayment',
 
@@ -27,10 +23,6 @@ export const createPaymentThunk = createAsyncThunk(
   },
 );
 
-// ============================================================
-// GET PAYMENT BY ORDER
-// ============================================================
-
 export const fetchPaymentByOrder = createAsyncThunk(
   'payment/fetchPaymentByOrder',
 
@@ -51,28 +43,17 @@ export const fetchPaymentByOrder = createAsyncThunk(
   },
 );
 
-// ============================================================
-// INITIAL STATE
-// ============================================================
-
 const initialState = {
   payment: null,
 
-  // CREATE PAYMENT
   status: 'idle',
   error: null,
 
-  // GET PAYMENT
   fetchStatus: 'idle',
   fetchError: null,
 
-  // Whether this order already has a payment
   hasPayment: false,
 };
-
-// ============================================================
-// SLICE
-// ============================================================
 
 const paymentSlice = createSlice({
   name: 'payment',
@@ -80,9 +61,9 @@ const paymentSlice = createSlice({
   initialState,
 
   reducers: {
-    // --------------------------------------------------------
-    // CLEAR PAYMENT
-    // --------------------------------------------------------
+
+
+
 
     clearPayment: state => {
       state.payment = null;
@@ -96,17 +77,17 @@ const paymentSlice = createSlice({
       state.hasPayment = false;
     },
 
-    // --------------------------------------------------------
-    // CLEAR CREATE ERROR
-    // --------------------------------------------------------
+
+
+
 
     clearPaymentError: state => {
       state.error = null;
     },
 
-    // --------------------------------------------------------
-    // CLEAR FETCH ERROR
-    // --------------------------------------------------------
+
+
+
 
     clearPaymentFetchError: state => {
       state.fetchError = null;
@@ -114,9 +95,9 @@ const paymentSlice = createSlice({
   },
 
   extraReducers: builder => {
-    // ========================================================
-    // CREATE PAYMENT
-    // ========================================================
+
+
+
 
     builder
       .addCase(createPaymentThunk.pending, state => {
@@ -140,9 +121,9 @@ const paymentSlice = createSlice({
         state.error = action.payload || 'Failed to create payment.';
       });
 
-    // ========================================================
-    // GET PAYMENT BY ORDER
-    // ========================================================
+
+
+
 
     builder
       .addCase(fetchPaymentByOrder.pending, state => {
@@ -184,7 +165,7 @@ const paymentSlice = createSlice({
           return;
         }
 
-        // Các lỗi khác mới thực sự là lỗi
+    
         state.fetchStatus = 'failed';
 
         state.fetchError = error?.message || 'Failed to get payment.';
@@ -195,16 +176,8 @@ const paymentSlice = createSlice({
   },
 });
 
-// ============================================================
-// ACTIONS
-// ============================================================
-
 export const { clearPayment, clearPaymentError, clearPaymentFetchError } =
   paymentSlice.actions;
-
-// ============================================================
-// SELECTORS
-// ============================================================
 
 export const selectPayment = state => state.payment.payment;
 
@@ -217,9 +190,5 @@ export const selectPaymentFetchStatus = state => state.payment.fetchStatus;
 export const selectPaymentFetchError = state => state.payment.fetchError;
 
 export const selectHasPayment = state => state.payment.hasPayment;
-
-// ============================================================
-// REDUCER
-// ============================================================
 
 export default paymentSlice.reducer;

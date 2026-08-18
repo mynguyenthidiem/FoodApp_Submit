@@ -8,22 +8,12 @@ import {
   deleteReview,
 } from '../services/reviewService';
 
-// ======================================
-// GET REVIEW BY ID
-// GET /api/Review/{id}
-// ======================================
-
 export const fetchReviewById = createAsyncThunk(
   'review/fetchReviewById',
   async id => {
     return await getReviewById(id);
   },
 );
-
-// ======================================
-// GET REVIEWS BY FOOD
-// GET /api/Review/food/{foodId}
-// ======================================
 
 export const fetchFoodReviews = createAsyncThunk(
   'review/fetchFoodReviews',
@@ -37,22 +27,12 @@ export const fetchFoodReviews = createAsyncThunk(
   },
 );
 
-// ======================================
-// CREATE REVIEW
-// POST /api/Review
-// ======================================
-
 export const createReviewAsync = createAsyncThunk(
   'review/createReview',
   async data => {
     return await createReview(data);
   },
 );
-
-// ======================================
-// UPDATE REVIEW
-// PUT /api/Review/{id}
-// ======================================
 
 export const updateReviewAsync = createAsyncThunk(
   'review/updateReview',
@@ -66,11 +46,6 @@ export const updateReviewAsync = createAsyncThunk(
   },
 );
 
-// ======================================
-// DELETE REVIEW
-// DELETE /api/Review/{id}
-// ======================================
-
 export const deleteReviewAsync = createAsyncThunk(
   'review/deleteReview',
   async id => {
@@ -81,10 +56,8 @@ export const deleteReviewAsync = createAsyncThunk(
 );
 
 const initialState = {
-  // Review detail
   review: null,
 
-  // Reviews grouped by food
   reviewsByFood: {},
 
   status: 'idle',
@@ -109,9 +82,9 @@ const reviewSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      // ======================================
-      // GET REVIEW BY ID
-      // ======================================
+  
+  
+  
 
       .addCase(fetchReviewById.pending, state => {
         state.status = 'loading';
@@ -128,9 +101,9 @@ const reviewSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ======================================
-      // GET FOOD REVIEWS
-      // ======================================
+  
+  
+  
 
       .addCase(fetchFoodReviews.pending, state => {
         state.status = 'loading';
@@ -150,9 +123,9 @@ const reviewSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ======================================
-      // CREATE
-      // ======================================
+  
+  
+  
 
       .addCase(createReviewAsync.pending, state => {
         state.status = 'loading';
@@ -178,9 +151,9 @@ const reviewSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ======================================
-      // UPDATE
-      // ======================================
+  
+  
+  
 
       .addCase(updateReviewAsync.pending, state => {
         state.status = 'loading';
@@ -196,9 +169,9 @@ const reviewSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ======================================
-      // DELETE
-      // ======================================
+  
+  
+  
 
       .addCase(deleteReviewAsync.pending, state => {
         state.status = 'loading';

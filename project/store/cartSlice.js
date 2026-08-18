@@ -8,17 +8,9 @@ import {
   clearCart,
 } from '../services/cartService';
 
-// ======================================
-// GET CART
-// ======================================
-
 export const fetchCart = createAsyncThunk('cart/fetchCart', async () => {
   return await getCart();
 });
-
-// ======================================
-// ADD
-// ======================================
 
 export const addCartItem = createAsyncThunk(
   'cart/addCartItem',
@@ -34,10 +26,6 @@ export const addCartItem = createAsyncThunk(
   },
 );
 
-// ======================================
-// UPDATE
-// ======================================
-
 export const updateCartItem = createAsyncThunk(
   'cart/updateCartItem',
   async ({ id, quantity }, { dispatch }) => {
@@ -52,10 +40,6 @@ export const updateCartItem = createAsyncThunk(
   },
 );
 
-// ======================================
-// DELETE
-// ======================================
-
 export const removeCartItem = createAsyncThunk(
   'cart/removeCartItem',
   async (id, { dispatch }) => {
@@ -66,10 +50,6 @@ export const removeCartItem = createAsyncThunk(
     return true;
   },
 );
-
-// ======================================
-// CLEAR
-// ======================================
 
 export const clearCartAsync = createAsyncThunk(
   'cart/clearCartAsync',
@@ -82,19 +62,11 @@ export const clearCartAsync = createAsyncThunk(
   },
 );
 
-// ======================================
-// INITIAL STATE
-// ======================================
-
 const initialState = {
   items: [],
   status: 'idle',
   error: null,
 };
-
-// ======================================
-// SLICE
-// ======================================
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -112,9 +84,9 @@ const cartSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      // ==================================
-      // FETCH
-      // ==================================
+  
+  
+  
 
       .addCase(fetchCart.pending, state => {
         state.status = 'loading';
@@ -136,9 +108,9 @@ const cartSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // ADD
-      // ==================================
+  
+  
+  
 
       .addCase(addCartItem.pending, state => {
         state.status = 'loading';
@@ -155,9 +127,9 @@ const cartSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // UPDATE
-      // ==================================
+  
+  
+  
 
       .addCase(updateCartItem.pending, state => {
         state.status = 'loading';
@@ -174,9 +146,9 @@ const cartSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // DELETE
-      // ==================================
+  
+  
+  
 
       .addCase(removeCartItem.pending, state => {
         state.status = 'loading';
@@ -193,9 +165,9 @@ const cartSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // CLEAR
-      // ==================================
+  
+  
+  
 
       .addCase(clearCartAsync.pending, state => {
         state.status = 'loading';

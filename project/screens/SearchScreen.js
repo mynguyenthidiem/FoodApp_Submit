@@ -93,7 +93,6 @@ export default function SearchScreen({ navigation }) {
     }
 
     const timer = setTimeout(() => {
-      // Search Foods - Backend
       dispatch(
         fetchSearchFoods({
           keyword: text,
@@ -102,7 +101,6 @@ export default function SearchScreen({ navigation }) {
         }),
       );
 
-      // Search Restaurants - Backend
       dispatch(
         searchRestaurantsAsync({
           keyword: text,

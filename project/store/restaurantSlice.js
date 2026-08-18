@@ -7,9 +7,6 @@ import {
   getTopRatedRestaurants,
   getOpenNowRestaurants,
 } from '../services/restaurantService';
-// ======================================
-// GET ALL
-// ======================================
 
 export const fetchRestaurants = createAsyncThunk(
   'restaurant/fetchRestaurants',
@@ -18,9 +15,6 @@ export const fetchRestaurants = createAsyncThunk(
   },
 );
 
-// ======================================
-// GET DETAIL
-// ======================================
 
 export const fetchRestaurantById = createAsyncThunk(
   'restaurant/fetchRestaurantById',
@@ -29,10 +23,6 @@ export const fetchRestaurantById = createAsyncThunk(
   },
 );
 
-// ======================================
-// SEARCH RESTAURANTS
-// GET /api/Restaurant/search
-// ======================================
 
 export const searchRestaurantsAsync = createAsyncThunk(
   'restaurant/searchRestaurants',
@@ -40,10 +30,6 @@ export const searchRestaurantsAsync = createAsyncThunk(
     return await searchRestaurants(keyword, pageNumber, pageSize);
   },
 );
-// ======================================
-// GET TOP RATED RESTAURANTS
-// GET /api/Restaurant/top-rated
-// ======================================
 
 export const fetchTopRatedRestaurants = createAsyncThunk(
   'restaurant/fetchTopRatedRestaurants',
@@ -51,10 +37,6 @@ export const fetchTopRatedRestaurants = createAsyncThunk(
     return await getTopRatedRestaurants(count);
   },
 );
-// ======================================
-// GET OPEN NOW RESTAURANTS
-// GET /api/Restaurant/open-now
-// ======================================
 
 export const fetchOpenNowRestaurants = createAsyncThunk(
   'restaurant/fetchOpenNowRestaurants',
@@ -62,9 +44,6 @@ export const fetchOpenNowRestaurants = createAsyncThunk(
     return await getOpenNowRestaurants(pageNumber, pageSize);
   },
 );
-// ======================================
-// INITIAL STATE
-// ======================================
 
 const initialState = {
   items: [],
@@ -82,9 +61,6 @@ const initialState = {
   error: null,
 };
 
-// ======================================
-// SLICE
-// ======================================
 
 const restaurantSlice = createSlice({
   name: 'restaurant',
@@ -100,9 +76,9 @@ const restaurantSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      // ==================================
-      // GET ALL
-      // ==================================
+    
+    
+    
 
       .addCase(fetchRestaurants.pending, state => {
         state.status = 'loading';
@@ -129,9 +105,9 @@ const restaurantSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // ==================================
-      // DETAIL
-      // ==================================
+    
+    
+    
 
       .addCase(fetchRestaurantById.pending, state => {
         state.status = 'loading';
@@ -153,7 +129,7 @@ const restaurantSlice = createSlice({
         state.error = action.error.message;
       })
 
-      // Search restaurants
+    
       .addCase(searchRestaurantsAsync.pending, state => {
         state.status = 'loading';
         state.error = null;
@@ -178,9 +154,9 @@ const restaurantSlice = createSlice({
 
         state.error = action.error.message;
       })
-      // ==================================
-      // TOP RATED
-      // ==================================
+    
+    
+    
 
       .addCase(fetchTopRatedRestaurants.pending, state => {
         state.status = 'loading';
@@ -199,9 +175,9 @@ const restaurantSlice = createSlice({
         state.status = 'failed';
         state.error = action.error.message;
       })
-      // ==================================
-      // OPEN NOW
-      // ==================================
+    
+    
+    
 
       .addCase(fetchOpenNowRestaurants.pending, state => {
         state.status = 'loading';

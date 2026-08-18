@@ -39,13 +39,11 @@ export default function CartScreen({ navigation }) {
 
   const { restaurant } = useSelector((state) => state.restaurant);
 
-  // Load cart
 
   useEffect(() => {
     dispatch(fetchCart());
   }, [dispatch]);
 
-  // Load first food
 
   useEffect(() => {
     if (items.length === 0) return;
@@ -53,7 +51,6 @@ export default function CartScreen({ navigation }) {
     dispatch(fetchFoodById(items[0].foodId));
   }, [dispatch, items]);
 
-  // Load restaurant
 
   useEffect(() => {
     if (!food?.restaurantId) return;
@@ -61,7 +58,6 @@ export default function CartScreen({ navigation }) {
     dispatch(fetchRestaurantById(food.restaurantId));
   }, [dispatch, food?.restaurantId]);
 
-  // Summary
 
   const subtotal = useMemo(() => {
     return items.reduce((sum, item) => sum + Number(item.totalPrice), 0);

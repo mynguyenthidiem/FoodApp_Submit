@@ -2,11 +2,6 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getUserById, updateProfile } from '../services/userService';
 
-// ======================================
-// GET USER
-// GET /api/User/{id}
-// ======================================
-
 export const fetchCurrentUser = createAsyncThunk(
   'user/fetchCurrentUser',
   async (id, { rejectWithValue }) => {
@@ -20,18 +15,13 @@ export const fetchCurrentUser = createAsyncThunk(
   },
 );
 
-// ======================================
-// UPDATE PROFILE
-// PUT /api/User/profile/{id}
-// ======================================
-
 export const updateProfileAsync = createAsyncThunk(
   'user/updateProfile',
   async (data, { rejectWithValue }) => {
     try {
       await updateProfile(data);
-      // Sau khi update profile, backend trả về dữ liệu user mới.
-      // Vì vậy phải GET lại user để lấy dữ liệu mới.
+  
+  
       return await getUserById(data.id);
     } catch (error) {
       return rejectWithValue(
@@ -43,19 +33,11 @@ export const updateProfileAsync = createAsyncThunk(
   },
 );
 
-// ======================================
-// INITIAL STATE
-// ======================================
-
 const initialState = {
   currentUser: null,
   status: 'idle',
   error: null,
 };
-
-// ======================================
-// SLICE
-// ======================================
 
 const userSlice = createSlice({
   name: 'user',
@@ -73,9 +55,9 @@ const userSlice = createSlice({
   extraReducers: builder => {
     builder
 
-      // ======================================
-      // FETCH USER
-      // ======================================
+  
+  
+  
 
       .addCase(fetchCurrentUser.pending, state => {
         state.status = 'loading';
@@ -94,9 +76,9 @@ const userSlice = createSlice({
           action.payload || action.error.message || 'Failed to load user';
       })
 
-      // ======================================
-      // UPDATE PROFILE
-      // ======================================
+  
+  
+  
 
       .addCase(updateProfileAsync.pending, state => {
         state.status = 'loading';

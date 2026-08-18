@@ -43,7 +43,6 @@ const favoriteStyles = StyleSheet.create({
     color: COLORS.text,
   },
 
-  // ===== TABS (Foods / Restaurants) =====
   tabBar: {
     flexDirection: "row",
     backgroundColor: COLORS.secondary,
@@ -76,7 +75,6 @@ const favoriteStyles = StyleSheet.create({
     color: COLORS.white,
   },
 
-  // ===== GRID =====
   grid: {
     paddingHorizontal: SPACING.lg,
     paddingBottom: 120,
@@ -186,7 +184,6 @@ const favoriteStyles = StyleSheet.create({
     color: COLORS.white,
   },
 
-  // ===== EMPTY STATE =====
   emptyContainer: {
     flex: 1,
     alignItems: "center",

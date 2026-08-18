@@ -55,7 +55,6 @@ export default function CategoryScreen({ navigation }) {
     loadData();
   }, []);
 
-  // SEARCH (debounced, same pattern as SearchScreen)
 
   useEffect(() => {
     const text = keyword.trim();

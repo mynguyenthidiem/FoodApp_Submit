@@ -92,7 +92,6 @@ const SettingsScreen = ({ navigation }) => {
               type="switch"
               switchValue={currentUser?.notificationEnabled ?? false}
               onToggle={(value) => {
-                // Handle toggle notification setting
                 console.log('Notification toggled:', value);
               }}
             />
