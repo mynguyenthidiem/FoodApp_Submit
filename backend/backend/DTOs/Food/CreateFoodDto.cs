@@ -1,0 +1,23 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace backend.DTOs.Food
+{
+    public class CreateFoodDto
+    {
+        [Required]
+        [StringLength(200)]
+        public string Name { get; set; } = "";
+
+        [StringLength(300)]
+        public string? Description { get; set; }
+
+        [Required]
+        [Range(0.01, double.MaxValue)]
+        public decimal Price { get; set; }
+
+        public IFormFile? Image { get; set; }
+
+        [Required]
+        public int CategoryId { get; set; }
+    }
+}

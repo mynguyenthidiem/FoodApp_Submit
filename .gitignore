@@ -1,0 +1,49 @@
+# ================= COMMON =================
+.DS_Store
+Thumbs.db
+*.log
+
+# ================= BACKEND (.NET / ASP.NET Core) =================
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+**/TestResults/
+*.trx
+*.nupkg
+**/packages/*
+!**/packages/build/
+
+# ================= FRONTEND (React Native) =================
+**/node_modules/
+*.tsbuildinfo
+**/.idea/
+**/.vscode/
+**/.metro-health-check*
+**/coverage/
+
+# Android build outputs
+**/android/app/build/
+**/android/build/
+**/android/.cxx/
+**/android/.gradle/
+**/*.keystore
+!**/debug.keystore
+
+# iOS build outputs
+**/ios/build/
+**/ios/Pods/
+**/ios/DerivedData/
+
+# Environment variables
+.env
+.env.local
+
+# ================= SECRETS =================
+**/firebase-service-account.json
+**/*serviceAccountKey*.json
+**/*service-account*.json
